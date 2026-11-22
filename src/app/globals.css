@@ -1,0 +1,164 @@
+@import "tailwindcss" source(none);
+@source "..";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-cream: var(--cream);
+  --color-petal: var(--petal);
+  --color-bloom: var(--bloom);
+  --font-display: var(--font-fredoka), sans-serif;
+  --font-sans: var(--font-jakarta), sans-serif;
+}
+
+:root {
+  --radius: 1.25rem;
+  /* Soft blush paper */
+  --background: oklch(0.975 0.012 55);
+  --foreground: oklch(0.22 0.035 25);
+  --card: oklch(0.995 0.005 55);
+  --card-foreground: oklch(0.22 0.035 25);
+  --popover: oklch(0.995 0.005 55);
+  --popover-foreground: oklch(0.22 0.035 25);
+  /* Coral-rose CTA — Loafly orange role, floral hue */
+  --primary: oklch(0.72 0.165 28);
+  --primary-foreground: oklch(0.99 0.01 55);
+  --secondary: oklch(0.93 0.03 15);
+  --secondary-foreground: oklch(0.28 0.04 20);
+  --muted: oklch(0.94 0.015 50);
+  --muted-foreground: oklch(0.5 0.03 30);
+  --accent: oklch(0.88 0.055 12);
+  --accent-foreground: oklch(0.28 0.05 15);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.02 40);
+  --input: oklch(0.92 0.015 40);
+  --ring: oklch(0.72 0.165 28);
+  /* Deep berry-cocoa hero / footer */
+  --ink: oklch(0.2 0.03 30);
+  --ink-foreground: oklch(0.97 0.01 55);
+  --cream: oklch(0.975 0.012 55);
+  --petal: oklch(0.9 0.045 12);
+  --bloom: oklch(0.78 0.12 15);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: color-mix(in oklch, var(--primary) 35%, transparent);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float-soft 5s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+.animate-rise {
+  animation: rise-in 0.7s ease-out both;
+}
+
+.animate-rise-delay-1 {
+  animation: rise-in 0.7s ease-out 0.12s both;
+}
+
+.animate-rise-delay-2 {
+  animation: rise-in 0.7s ease-out 0.24s both;
+}
+
+.sticker {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
